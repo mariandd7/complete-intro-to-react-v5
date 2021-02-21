@@ -5734,7 +5734,7 @@ if ("development" !== "production") {
       }
 
       var eventName = 'on' + eventNameSuffix;
-      var isSupported = eventName in document;
+      var isSupported = (eventName in document);
 
       if (!isSupported) {
         var element = document.createElement('div');
@@ -25717,7 +25717,7 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Pet = function Pet(props) {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, props.name), _react.default.createElement("h2", null, props.animal), _react.default.createElement("h2", null, props.breed));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, props.name), /*#__PURE__*/_react.default.createElement("h2", null, props.animal), /*#__PURE__*/_react.default.createElement("h2", null, props.breed));
 };
 
 var _default = Pet;
@@ -25734,22 +25734,22 @@ var _Pet = _interopRequireDefault(require("./Pet"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Adopt Me!"), _react.default.createElement(_Pet.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Adopt Me!"), /*#__PURE__*/_react.default.createElement(_Pet.default, {
     name: "Luna",
     animal: "dog",
     breed: "Havanese"
-  }), _react.default.createElement(_Pet.default, {
+  }), /*#__PURE__*/_react.default.createElement(_Pet.default, {
     name: "Pepper",
     animal: "bird",
     breed: "Cockatiel"
-  }), _react.default.createElement(_Pet.default, {
+  }), /*#__PURE__*/_react.default.createElement(_Pet.default, {
     name: "Doink",
     animal: "cat",
     breed: "Mix"
   }));
 };
 
-_reactDom.default.render(_react.default.createElement(App, null), document.getElementById("root"));
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById("root"));
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./Pet":"Pet.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -25778,7 +25778,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64425" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64714" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -25809,8 +25809,9 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         assetsToAccept.forEach(function (v) {
           hmrAcceptRun(v[0], v[1]);
         });
-      } else {
-        window.location.reload();
+      } else if (location.reload) {
+        // `location` global exists in a web worker context but lacks `.reload()` function.
+        location.reload();
       }
     }
 
